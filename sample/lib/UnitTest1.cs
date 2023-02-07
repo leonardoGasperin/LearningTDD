@@ -44,6 +44,6 @@ public class Tests
             if (aux.Count == 4)
                 break;
         }
-        Assert.AreEqual(aux.Count, 4);
+        Assert.That(actual: maxValueWithouRepeat, Is.EqualTo(aux.Count));
     }
 }
