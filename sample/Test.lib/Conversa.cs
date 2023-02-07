@@ -1,15 +1,12 @@
 ﻿namespace Test.lib;
 public class Conversa
 {
-    private int cnt = 0;
-    public string Falar()
+    public string Falar(int i)
     {
-        if(cnt % 2 == 0)
+        if(i % 2 == 0)
         {
             return "Oi";
         }
-        cnt++;
-
         return "Tchau";
     }
 
