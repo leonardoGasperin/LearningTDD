@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <ItemGroup>
+  <!--<ItemGroup>
     <ProjectReference Include="..\lib\lib.csproj" />
-  </ItemGroup>
+  </ItemGroup>-->
 
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="6.9.0" />
