@@ -4,7 +4,7 @@ namespace Test.lib;
 public class Conversa
 {
     private readonly string[] randonTalk = { "papagaio", "sábado", "quem sabe amanhã", "não" };
-    private List<Contato> ContatoLista { get; set; }
+    private List<Contato> contatoLista = new();
 
     public static string Falar(int i)
     {
@@ -24,19 +24,37 @@ public class Conversa
 
     public List<Contato> GetAllContato()
     {
-        if (ContatoLista is null)
+        if (contatoLista is null)
             throw new Exception("Lista de contato vazia");
-        return ContatoLista;
+        if (contatoLista.Count < 0)
+            throw new Exception("Lista de contato com erro.");
+
+        return contatoLista;
     }
 
-    public bool AddContato(Contato add)
+    public void AddContato(Contato addContact)
     {
-        if (add.Name.Count() is 0)
+        if (addContact.Name.Length is 0)
             throw new Exception("Nome Invalido");
-        if (!long.TryParse(add.Telefone, out long n) || add.Telefone.Count() is < 9)
+        if (!long.TryParse(addContact.Telefone, out _) || (addContact.Telefone.Length is < 9 || addContact.Telefone.Length is > 14))
             throw new Exception("Telefone Invalido");
-        ContatoLista.Add(add);
+        
+        contatoLista.Add(addContact);
+    }
 
-        return true;
+    public Contato SearchContato(string telefone)
+    {
+        if (telefone is null || !long.TryParse(telefone, out long _))
+            throw new Exception("Numero invalido para busca");
+        return contatoLista.First(x => x.Telefone == telefone);
+    }
+
+    public void RemoveContato(string telefone)
+    {
+        var removeContato = SearchContato(telefone);
+        if (removeContato is null)
+            throw new Exception("Contato nao existente");
+
+        contatoLista.Remove(removeContato);
     }
 }
