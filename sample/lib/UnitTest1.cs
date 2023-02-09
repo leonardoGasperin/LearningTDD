@@ -115,9 +115,16 @@ public class Tests
     {
         var t = new Conversa();
 
+        t.AddContato(
+        new Contato
+        {
+            Name = "Antonio Antonietta Tonny",
+            Telefone = "159487263"
+        });
+
         Assert.Catch(() =>
         {
-            Assert.IsNotEmpty(t.GetAllContato());
+            Assert.IsEmpty(t.GetAllContato());
         });
         Assert.Catch(() =>
         {
@@ -133,6 +140,14 @@ public class Tests
     public void Test5()
     {
         var t = new Conversa();
+
+        t.AddContato(
+                new Contato
+                {
+                    Name = "Antonio Antonietta Tonny",
+                    Telefone = "159487263"
+                });
+
         int chk = t.GetAllContato().Count;
         Assert.Catch(() =>
         {
@@ -142,6 +157,11 @@ public class Tests
         Assert.Catch(() =>
         {
             t.RemoveContato("a");
+        });
+
+        Assert.DoesNotThrow(() =>
+        {
+            t.RemoveContato("159487263");
         });
     }
 }
