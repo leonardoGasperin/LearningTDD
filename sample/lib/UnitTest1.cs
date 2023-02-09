@@ -24,6 +24,7 @@ public class Tests
                 cnt++;
         }
         Assert.That(cnt, Is.Zero);
+
     }
 
     [Test]
@@ -46,6 +47,7 @@ public class Tests
                 break;
         }
         Assert.That(actual: maxValueWithouRepeat, Is.EqualTo(aux.Count));
+
     }
 
     [Test]
@@ -107,7 +109,6 @@ public class Tests
                 });
         });
 
-
     }
 
     [Test]
@@ -134,6 +135,7 @@ public class Tests
         {
             t.GetAllContato();
         });
+
     }
 
     [Test]
@@ -163,5 +165,6 @@ public class Tests
         {
             t.RemoveContato("159487263");
         });
+
     }
 }
